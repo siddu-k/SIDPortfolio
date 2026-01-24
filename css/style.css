@@ -1211,61 +1211,213 @@ header {
     color: var(--white);
 }
 
+/* Hamburger Menu (Desktop Hidden) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+    padding: 0.5rem;
+}
+
+.hamburger-menu .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--text-black);
+    transition: all 0.3s;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
     .container {
         padding: 0 2rem;
     }
 
-    .hero {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    .hero-title {
+        font-size: 4rem;
     }
 
-    .hero-image {
-        order: -1;
-    }
-
-    .offering-header,
-    .offering-grid,
-    .cert-grid {
-        grid-template-columns: 1fr;
+    .offering-header {
         padding-left: 0;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .header-right {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .offering-grid {
+        padding-left: 0;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .scroll-indicator {
         display: none;
     }
-
-    .header-right {
-        text-align: left;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .header-nav {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
 }
 
 @media (max-width: 768px) {
-    .section-title {
-        font-size: 3rem;
+
+    /* Global Adjustments */
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    header {
+        padding: 1.5rem 0;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Header Nav - Will be handled by Hamburger script */
+    .header-nav {
+        display: none;
+        /* Hidden by default on mobile */
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .header-nav.active {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+        border-top: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        background: transparent;
+        align-items: center;
+        text-align: center;
+        min-width: auto;
+    }
+
+    .nav-title {
+        font-size: 1.1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .hero-content {
+        order: 1;
+        padding-top: 0;
+    }
+
+    .hero-image-container {
+        order: 2;
+        min-height: auto;
+    }
+
+    .profile-img {
+        max-height: 350px;
     }
 
     .hero-title {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
 
-    .section-footer {
+    .role-container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-cta {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-checklist {
+        align-items: center;
+    }
+
+    /* Grids to Single Column */
+    .offering-grid,
+    .cert-grid,
+    .education-timeline,
+    .skills-grid,
+    .projects-grid,
+    .github-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .section-header-wrapper {
+        text-align: center;
+    }
+
+    .section-label {
+        justify-content: center;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    /* Footer */
+    .social-links {
+        justify-content: center;
         flex-direction: column;
-        align-items: flex-start;
+        gap: 1.5rem;
     }
 
-    .diagonal-lines {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .diagonal-lines,
+    .gradient-blob {
         display: none;
+    }
+
+    /* Fix Social Icons Mobile */
+    .social-icons-row {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    /* Fix Marquee Mobile Height */
+    .marquee-section {
+        padding: 1rem 0;
+        margin: 0 0 1rem 0;
+    }
+
+    .marquee-item {
+        font-size: 1rem;
+        gap: 1.5rem;
+    }
+
+    /* Fix GitHub Overflow */
+    .github-card {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .github-card img {
+        width: 100%;
+        height: auto;
     }
 }
